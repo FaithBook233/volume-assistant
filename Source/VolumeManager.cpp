@@ -7,7 +7,7 @@
 
 VolumeManager::VolumeManager()
 {
-    CoInitialize(0);
+   
 }
 
 bool VolumeManager::SetSystemVolume(const int NewVolume)

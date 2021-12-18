@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+    CoInitialize(0);
     string DocumentPath;
     JsonSerializer::GetDocumentPath(DocumentPath);
         cout << DocumentPath << endl;
@@ -23,6 +24,7 @@ int main()
 
 int main2()
 {
+    CoInitialize(0);
     DeviceManager MyDeviceManager = DeviceManager();
     VolumeManager MyVolumeManager = VolumeManager();
 //CheckDevice:
