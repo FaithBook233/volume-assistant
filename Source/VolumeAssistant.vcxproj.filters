@@ -21,6 +21,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="VolumeAssistant.cpp" />
+    <ClCompile Include="Jsonserializer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeManager.h">
@@ -30,6 +33,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="WindowsOperator.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Jsonserializer.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

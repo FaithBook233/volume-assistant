@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DeviceManager.cpp" />
+    <ClCompile Include="Jsonserializer.cpp" />
     <ClCompile Include="VolumeAssistant.cpp" />
     <ClCompile Include="VolumeManager.cpp" />
     <ClCompile Include="WindowsOperator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeviceManager.h" />
+    <ClInclude Include="Jsonserializer.h" />
     <ClInclude Include="VolumeManager.h" />
     <ClInclude Include="WindowsOperator.h" />
   </ItemGroup>
