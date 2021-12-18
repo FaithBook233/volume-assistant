@@ -3,10 +3,10 @@ class VolumeManager
 {
 public:
 	VolumeManager();
-	static void SetSystemVolume(const float NewVolume);
-	static float GetSystemVolume();
-	static void MuteTheSystem(bool NewSet);
+	bool SetSystemVolume(const int NewVolume);
+	int GetSystemVolume();
+	void MuteTheSystem(bool NewSet);
 private:
-	float SystemmVolume;
+	int SystemmVolume;
 };
 
