@@ -1,8 +1,11 @@
 ﻿#include <iostream>
+#include <string>
 
 #include "VolumeManager.h" 
 #include "DeviceManager.h"
 #include "JsonSerializer.h"
+
+
 using namespace std;
 
 int main()
@@ -11,6 +14,22 @@ int main()
     string DocumentPath;
     JsonSerializer::GetDocumentPath(DocumentPath);
         cout << DocumentPath << endl;
+
+    std::wstring deviceId;
+    std::wstring deviceName;
+    DeviceManager::GetDefaultDevice(deviceId, deviceName);
+    std::wcout << "默认设备ID:" << deviceId  <<std::endl;
+
+    std::cout << "下面是设备列表" << std::endl;
+    std::map<wstring, wstring>deviceMap;
+    DeviceManager::GetDevices(deviceMap);
+    for (auto Current : deviceMap)
+    {
+        std::wcout << "设备ID：" << Current.first << std::endl;// << "设备名" << Current.second << std::endl << std::endl;
+    }
+
+
+        //std::cout << **ppMMDevice;
 //    /*else cout << "获取路径失败" << endl;*/
 //    int NewVolume;
 //    VolumeManager MyVolumeManager = VolumeManager();
