@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="VolumeAssistant.cpp" />
+    <ClCompile Include="VolumeManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VolumeManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
