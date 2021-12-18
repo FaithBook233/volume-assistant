@@ -3,12 +3,12 @@
 #include <iostream>
 #include <shlobj.h>
 
-#pragma comment(lib, "shell32.lib")
+//#pragma comment(lib, "shell32.lib")
 
-bool WindowsOperator::GetDocumentPath(std::string& SystemDocumentPath) const
+bool WindowsOperator::GetDocumentPath(std::string& SystemDocumentPath)
 {
-    CHAR my_documents[MAX_PATH];
-    HRESULT result = SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, my_documents);
-    SystemDocumentPath = std::string(my_documents);
-    return S_OK;
+    CHAR MyDocumentsPath[MAX_PATH];
+    HRESULT result = SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, MyDocumentsPath);
+    SystemDocumentPath = std::string(MyDocumentsPath);
+    return result;
 }
