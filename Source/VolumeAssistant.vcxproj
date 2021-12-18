@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DeviceManager.cpp" />
     <ClCompile Include="VolumeAssistant.cpp" />
     <ClCompile Include="VolumeManager.cpp" />
+    <ClCompile Include="WindowsOperator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DeviceManager.h" />
     <ClInclude Include="VolumeManager.h" />
+    <ClInclude Include="WindowsOperator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

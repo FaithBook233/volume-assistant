@@ -15,10 +15,18 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="VolumeAssistant.cpp" />
+    <ClCompile Include="DeviceManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsOperator.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeManager.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="DeviceManager.h" />
+    <ClInclude Include="WindowsOperator.h" />
   </ItemGroup>
 </Project>
