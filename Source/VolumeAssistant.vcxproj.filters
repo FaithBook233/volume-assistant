@@ -17,11 +17,8 @@
     <ClCompile Include="DeviceManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="WindowsOperator.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeAssistant.cpp" />
-    <ClCompile Include="Jsonserializer.cpp">
+    <ClCompile Include="JsonSerializer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +29,7 @@
     <ClInclude Include="DeviceManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsOperator.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Jsonserializer.h">
+    <ClInclude Include="JsonSerializer.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

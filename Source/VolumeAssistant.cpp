@@ -1,15 +1,15 @@
 ﻿#include <iostream>
 
-#include "VolumeManager.h"
-#include "WindowsOperator.h"
+#include "VolumeManager.h" 
 #include "DeviceManager.h"
+#include "JsonSerializer.h"
 using namespace std;
 
-//int main()
-//{
-//    string DocumentPath;
-//    /* if*/ WindowsOperator::GetDocumentPath(DocumentPath);
-//        cout << DocumentPath << endl;
+int main()
+{
+    string DocumentPath;
+    JsonSerializer::GetDocumentPath(DocumentPath);
+        cout << DocumentPath << endl;
 //    /*else cout << "获取路径失败" << endl;*/
 //    int NewVolume;
 //    VolumeManager MyVolumeManager = VolumeManager();
@@ -19,9 +19,9 @@ using namespace std;
 //        cin >> NewVolume;
 //        MyVolumeManager.SetSystemVolume(NewVolume);
 //    }
-//}
+}
 
-int main()
+int main2()
 {
     DeviceManager MyDeviceManager = DeviceManager();
     VolumeManager MyVolumeManager = VolumeManager();
