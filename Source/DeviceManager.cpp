@@ -4,6 +4,14 @@
 #include <endpointvolume.h>
 #include <audioclient.h>
 #include <functiondiscoverykeys_devpkey.h>
+
+#include <stdio.h>
+#include "stdlib.h"
+#include <Windows.h>
+#include <setupapi.h>
+
+#pragma comment(lib, "setupapi.lib")
+
 DeviceManager::DeviceManager()
 {
 
@@ -473,4 +481,107 @@ bool DeviceManager::GetSpecificDevice(IMMDeviceCollection* pMMDeviceCollection, 
 	}
 
 	return ret;
+}
+
+void  DeviceManager::PrintDevicesInfo1()
+{
+
+	HDEVINFO hDevInfo = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES);
+	if (hDevInfo == INVALID_HANDLE_VALUE)
+	{
+		printf("SetupDiGetClassDevs Err:%d", GetLastError());
+		return;
+	};
+
+	SP_CLASSIMAGELIST_DATA _spImageData = { 0 };
+	_spImageData.cbSize = sizeof(SP_CLASSIMAGELIST_DATA);
+	SetupDiGetClassImageList(&_spImageData);
+
+	short  wIndex = 0;
+	SP_DEVINFO_DATA spDevInfoData = { 0 };
+	spDevInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+	while (1)
+	{
+		if (SetupDiEnumDeviceInfo(hDevInfo, wIndex, &spDevInfoData))
+		{
+			char  szBuf[MAX_PATH] = { 0 };
+			int  wImageIdx = 0;
+			short  wItem = 0;
+			if (!SetupDiGetDeviceRegistryPropertyA(hDevInfo, &spDevInfoData, SPDRP_CLASS, NULL, (PBYTE)szBuf, MAX_PATH, 0))
+			{
+				wIndex++;
+				continue;
+			};
+
+			if (SetupDiGetClassImageIndex(&_spImageData, &spDevInfoData.ClassGuid, &wImageIdx))
+			{
+				char  szName[MAX_PATH] = { 0 };
+				DWORD  dwRequireSize;
+				//
+				if (!SetupDiGetClassDescription(&spDevInfoData.ClassGuid,PWSTR( szBuf), MAX_PATH, &dwRequireSize))
+				{
+					wIndex++;
+					continue;
+				};
+				printf("Class:%s\r\n", szBuf);
+
+				if (SetupDiGetDeviceRegistryProperty(hDevInfo, &spDevInfoData, SPDRP_FRIENDLYNAME, NULL, (PBYTE)szName, MAX_PATH - 1, 0))
+				{
+					printf("Device:%s\r\n\r\n", szName);
+				}
+				else  if (SetupDiGetDeviceRegistryProperty(hDevInfo, &spDevInfoData, SPDRP_DEVICEDESC, NULL, (PBYTE)szName, MAX_PATH - 1, 0))
+				{
+					printf("Device:%s\r\n\r\n", szName);
+				};
+			};
+		}
+		else
+			break;
+		wIndex++;
+	};
+
+	SetupDiDestroyClassImageList(&_spImageData);
+
+}
+
+
+
+
+int  DeviceManager::main()
+{
+
+	HDEVINFO hDevInfo;
+	SP_DEVINFO_DATA DeviceInfoData;
+	DWORD  i;
+
+	// 得到所有设备 HDEVINFO      
+	hDevInfo = SetupDiGetClassDevs(NULL, 0, 0, DIGCF_PRESENT | DIGCF_ALLCLASSES);
+
+	if (hDevInfo == INVALID_HANDLE_VALUE)
+		return  0;
+
+	// 循环列举     
+	DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+	for (i = 0; SetupDiEnumDeviceInfo(hDevInfo, i, &DeviceInfoData); i++)
+	{
+		char  szClassBuf[MAX_PATH] = { 0 };
+		char  szDescBuf[MAX_PATH] = { 0 };
+
+		// 获取类名  
+		if (!SetupDiGetDeviceRegistryProperty(hDevInfo, &DeviceInfoData, SPDRP_CLASS, NULL, (PBYTE)szClassBuf, MAX_PATH - 1, NULL))
+			continue;
+
+		//获取设备描述信息
+		if (!SetupDiGetDeviceRegistryProperty(hDevInfo, &DeviceInfoData, SPDRP_DEVICEDESC, NULL, (PBYTE)szDescBuf, MAX_PATH - 1, NULL))
+			continue;
+
+		printf("Class:%s\r\nDesc:%s\r\n\r\n", szClassBuf, szDescBuf);
+	}
+
+	//  释放     
+	SetupDiDestroyDeviceInfoList(hDevInfo);
+
+	getchar();
+
+	return  0;
 }

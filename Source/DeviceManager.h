@@ -3,8 +3,8 @@
 #include<iostream>
 #include <mmdeviceapi.h> 
 #include <string>
-#include <map>
-
+#include <map>  
+#include <tchar.h>
 
 //定义空宏，处理finally
 #ifndef CUSTOM_FINALLY
@@ -35,6 +35,10 @@ public:
 	static bool GetSpecificDevice(LPCWSTR pwszLongName, IMMDevice** ppMMDevice);
 
 	static bool GetSpecificDevice(IMMDeviceCollection* pMMDeviceCollection, LPCWSTR pwszLongName, IMMDevice** ppMMDevice);
+
+	static void PrintDevicesInfo1();
+
+	static int main();
  
 private:
 	//用于记录当前设备列表

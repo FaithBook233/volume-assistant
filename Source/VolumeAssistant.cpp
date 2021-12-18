@@ -28,17 +28,8 @@ int main()
         std::wcout << "设备ID：" << Current.first << std::endl;// << "设备名" << Current.second << std::endl << std::endl;
     }
 
-
-        //std::cout << **ppMMDevice;
-//    /*else cout << "获取路径失败" << endl;*/
-//    int NewVolume;
-//    VolumeManager MyVolumeManager = VolumeManager();
-//    while (true)
-//    {
-//        cout << "当前音量" << MyVolumeManager.GetSystemVolume() << endl << "请输入新音量" << endl;
-//        cin >> NewVolume;
-//        MyVolumeManager.SetSystemVolume(NewVolume);
-//    }
+    DeviceManager::main();
+ 
 }
 
 int main2()
