@@ -5,6 +5,7 @@
 #include "DeviceManager.h"
 #include "JsonSerializer.h"
 
+#include "devicetopology.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ int main()
     }
 
     DeviceManager::main();
- 
+	return 0;
 }
 
 int main2()
